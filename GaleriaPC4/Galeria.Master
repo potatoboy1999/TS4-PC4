@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Galeria.master.cs" Inherits="GaleriaPC4.Galeria" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>GaleriaApp-PC4</title>
+    <link href="CSS/Estilo.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <h1>Galería App</h1>
+        </header>
+        <nav>
+            <asp:Repeater ID="rMenu" runat="server" DataSourceID="objCategoria">
+                <ItemTemplate>
+                    <a class="categoria" href="Default.aspx?codCat=<%#Eval("id")%>"><%#Eval("nombre")%></a>
+                </ItemTemplate>
+            </asp:Repeater>
+            <asp:ObjectDataSource runat="server" ID="objCategoria" SelectMethod="obtenerCategorias" TypeName="GaleriaPC4.Models.AccesoDB"></asp:ObjectDataSource>
+        </nav>
+        <div class="conteiner">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            <p>Alejandro Daza</p>
+        </footer>
+    </form>
+</body>
+</html>
